@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ga5-incident-agent
+    runtime: python
+    plan: free
+    buildCommand: "echo no dependencies"
+    startCommand: "python app.py"
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: LLM_BASE_URL
+        value: https://aipipe.org/openai/v1
+      - key: LLM_MODEL
+        value: gpt-4.1-mini
+      - key: LLM_API_KEY
+        sync: false
